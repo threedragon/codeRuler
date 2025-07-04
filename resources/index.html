@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワード入力</title>
+    <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/neutralino.js"></script>
+    <script src="condcheck.js"></script>
+    <script src="problems_loader.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <button id="loadProblemsBtn" class="fixed-top-right" style="top:1.5em;right:1.5em;z-index:20;" title="問題読込">📖</button>
+    <button id="randomCondBtn" class="fixed-top-right" style="top:5.5em;right:1.5em;z-index:19;" title="条件をランダム選択">🎲</button>
+    <button id="howtoBtn" class="fixed-top-right" style="top:9.5em;right:1.5em;z-index:18;" title="遊び方">❔</button>
+    <button id="creditBtn" class="fixed-top-right" style="top:13.5em;right:1.5em;z-index:17;" title="クレジット">👤</button>
+    <button id="cheatBtn" class="fixed-top-left" title="チート" style="display:none;">💡</button>
+    <div id="cheatOverlay" class="cheat-overlay" style="display:none;"></div>
+    <div id="problemsOverlay" class="problems-overlay" style="display:none;"></div>
+    <div id="ruleOverlay" class="rule-overlay" style="display:flex;">
+        <div class="rule-panel">
+            <h2>ルール説明</h2>
+            <ul>
+                <li><b>モード</b><br>
+                    画面右上のボタンで「<b>読み込み</b>」または「<b>ランダム</b>」を選択できます。<br>
+                    <b>読み込み</b>：ファイルから問題を選択して挑戦できます。<br>
+                    <b>ランダム</b>：条件がランダムに出題されます。
+                </li>
+                <li><b>条件</b><br>
+                    1つの問題には複数の条件が設定されています。<br>
+                    条件は「すべての奇数である」「各桁の数を足すと10以下である」など、数字の性質に関する正否がわかるものです。<br>
+                    すべての条件を満たす答えは必ず1つ以上存在します。
+                </li>
+                <li><b>入力</b><br>
+                    3～6桁の数字をテンキーまたはキーボードで入力します。
+                </li>
+                <li><b>出力</b><br>
+                    条件をすべて満たすと「パスワードOK!」と表示されます。<br>
+                    条件ごとの判定は✔️/❌で表示されます。
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" style="position:relative;">
+        <div id="mainConsole">
+            <div id="problemIdLabel" style="font-weight:bold;margin-bottom:0.5em;"></div>
+            <div class="inputs" id="inputs"></div>
+            <div class="conditions" id="conditionsList"></div>
+            <div id="message"></div>
+        </div>
+        <div style="display:flex;gap:2em;align-items:flex-start;justify-content:center;margin-top:2em;width:100%;">
+            <div id="historyBox">
+                <div class="history-table-wrapper" style="overflow-x:auto;">
+                    <table id="historyTable" class="no-border">
+                        <tbody id="historyBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="flex:1;min-width:180px;display:flex;flex-direction:column;align-items:center;">
+                <div class="num-buttons">
+                    <button class="num-btn" type="button">7</button>
+                    <button class="num-btn" type="button">8</button>
+                    <button class="num-btn" type="button">9</button>
+                    <button class="num-btn" type="button">4</button>
+                    <button class="num-btn" type="button">5</button>
+                    <button class="num-btn" type="button">6</button>
+                    <button class="num-btn" type="button">1</button>
+                    <button class="num-btn" type="button">2</button>
+                    <button class="num-btn" type="button">3</button>
+                    <button id="clearBtn" class="num-btn" type="button">C</button>
+                    <button class="num-btn" type="button">0</button>
+                    <button class="num-btn del-btn" type="button">⌫</button>
+                </div>
+                <div style="margin-top:0.5em;width:100%;">
+                    <button id="submitBtn">決定</button>
+                </div>
+            </div>
+        </div>
+        <button id="nextProblemBtn" class="main-bottom-right">次の問題へ</button>
+    </div>
+    <div id="creditOverlay" class="credit-overlay" style="display:none;">
+        <div class="credit-panel">
+            <h2>クレジット</h2>
+            <p>作者名：rst</p>
+        </div>
+    </div>
+</body>
+</html>
