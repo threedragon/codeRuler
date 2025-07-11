@@ -40,9 +40,10 @@ async function showProblemsOverlay() {
             return;
         }
         let html = '<div class="problem-list">';
-        ids.forEach(id => {
+        ids.forEach((id, i) => {
             const solved = solvedProblems.includes(id);
             html += `<button class="problem-btn${solved ? ' solved' : ''}" data-idx="${id-1}">${id}</button>`;
+            if((i+1) % 10 === 0) html += '<br>';
         });
         html += '</div>';
         problemsOverlay.innerHTML = html;
